@@ -1,0 +1,8 @@
+Congratulations, the Fleet Management demo is running.
+To view this, visit the url of the UI here: http://{{ .Values.ui..hostname }} .
+
+To view more nodes on the map, scale the {{ .Values.gps.name }} service by using the command:  
+
+kubectl scale deployment {{ .Values.gps.name }} --replicas=3
+
+

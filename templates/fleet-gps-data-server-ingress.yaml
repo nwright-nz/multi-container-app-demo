@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Values.dataserver.name }}
+  namespace: {{ .Values.namespace }}
+  annotations:
+    kubernetes.io/ingress.class: {{ .Values.ingress.annotations.ingressclass }}
+
+spec:
+  rules:
+  - host: "{{ .Values.dataserver.hostname }}"
+    http:
+      paths:
+      - backend:
+          serviceName: {{ .Values.dataserver.name }}
+          servicePort: {{ .Values.dataserver.ingress_port }}

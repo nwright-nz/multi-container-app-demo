@@ -1,0 +1,25 @@
+--- 
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata: 
+  name: {{ .Values.dataserver.name }}
+  namespace: {{ .Values.namespace }}
+spec: 
+  replicas: {{ .Values.replicaCount }}
+  template: 
+    metadata: 
+      labels: 
+        app: {{ .Values.dataserver.name }}
+    spec: 
+      containers: 
+      - name: {{ .Values.dataserver.name }}
+        env: 
+          - name: PORT
+            value: "{{ .Values.dataserver.port }}"
+          - name: MONGODB_URL
+            value: "{{ .Values.db.url }}"
+          
+        image: {{ .Values.dataserver.image }}
+        ports: 
+            - containerPort: {{ .Values.dataserver.port }}
+

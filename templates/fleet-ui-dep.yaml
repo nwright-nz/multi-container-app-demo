@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Values.ui.name }}
+  namespace: {{ .Values.namespace }}  
+spec:
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.ui.name }}
+    spec:
+      containers:
+      - name: {{ .Values.ui.name }}
+        env:
+          - name: PORT
+            value: "{{ .Values.ui.port }}"
+          - name: center_lat
+            value: "{{ .Values.ui.center_lat }}"
+          - name: center_lng
+            value: "{{ .Values.ui.center_lon }}"
+          - name: DATA_SERVER
+            value: "http://{{ .Values.dataserver.host }}"
+          - name: DS_PORT
+            value: "{{ .Values.dataserver.port }}"
+        image: {{ .Values.ui.image }}
+        ports:
+            - containerPort: {{ .Values.ui.port }}
+       

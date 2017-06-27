@@ -1,0 +1,27 @@
+--- 
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata: 
+  name: {{ .Values.gps.name }}
+  namespace: {{ .Values.namespace }}
+spec: 
+  replicas: {{ .Values.replicaCount }}
+  template: 
+    metadata: 
+      labels: 
+        app: {{ .Values.gps.name }}
+    spec: 
+      containers: 
+      - name: {{ .Values.gps.name }}
+        env: 
+          - name: INSTANCE_PORT
+            value: '7000'
+          - name: DOCKER_TYPE
+            value: {{ .Values.gps.telemetry_name }}
+          - name: BINARY_DATA_SERVER
+            value: "{{ .Values.gps.binaryserver_uri }}"
+        image: {{ .Values.gps.image }}
+        command: ["node"]
+        args: ["server.js"]
+        
+
