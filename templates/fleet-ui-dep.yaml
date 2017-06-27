@@ -17,13 +17,13 @@ spec:
           - name: PORT
             value: "{{ .Values.ui.port }}"
           - name: center_lat
-            value: "{{ .Values.ui.center_lat }}"
+            value: "{{ .Values.ui.latitude }}"
           - name: center_lng
-            value: "{{ .Values.ui.center_lon }}"
+            value: "{{ .Values.ui.longtitude }}"
           - name: DATA_SERVER
-            value: "http://{{ .Values.dataserver.host }}"
+            value: "http://{{ .Values.dataserver.hostname }}"
           - name: DS_PORT
-            value: "{{ .Values.dataserver.port }}"
+            value: "{{ .Values.dataserver.ingressport }}"
         image: {{ .Values.ui.image }}
         ports:
             - containerPort: {{ .Values.ui.port }}

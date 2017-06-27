@@ -1,7 +1,7 @@
 # Default values for fleet-mgmt-chart.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-namespace: fleetmgmt
+namespace: default 
 db:
   name: db
   mongodb_url: mongodb://db:27017/gps-db
@@ -9,7 +9,7 @@ db:
   port: 27017
 gps:
   name: gps
-  binary_server: http://binary-server:7001/telemetry
+  binary_server_uri: http://binary-server:7001/telemetry
   telemetry_name: Helm_Kubernetes
   image: nwrightnz/gps-sim
 binaryserver:
@@ -22,40 +22,21 @@ dataserver:
   port: 7002
   ingress_port: 80
   image: nwrightnz/gps-data-server
-  hostname: dserver.cloudlearning.pro
+  hostname: ds.cloudlearning.pro
 ui:
   name: gps-ui
   port: 80  
   image: nwrightnz/gps-ui
-  hostname: fleetmgr.cloudlearning.pro
+  hostname: fleet.cloudlearning.pro
   # The lat and lon below are used to center the map on the city of your choice.
   latitude:  -36.8485
   longtitude: 174.7633
 replicaCount: 1
 image:
   pullPolicy: IfNotPresent
-service:
-  type: ClusterIP
-  externalPort: 80
-  internalPort: 80
 ingress:
   enabled: false
   # Used to create Ingress record (should used with service.type: ClusterIP).
-  hosts:
-    - chart-example.local
   annotations:
      ingressclass: traefik 
-    # kubernetes.io/tls-acme: "true"
-  tls:
-    # Secrets must be manually created in the namespace.
-    # - secretName: chart-example-tls
-    #   hosts:
-    #     - chart-example.local
-resources:
-  limits:
-    cpu: 100m
-    memory: 128Mi
-  requests:
-    cpu: 100m
-    memory: 128Mi
 

@@ -19,7 +19,7 @@ spec:
           - name: DOCKER_TYPE
             value: {{ .Values.gps.telemetry_name }}
           - name: BINARY_DATA_SERVER
-            value: "{{ .Values.gps.binaryserver_uri }}"
+            value: "{{ .Values.gps.binary_server_uri }}"
         image: {{ .Values.gps.image }}
         command: ["node"]
         args: ["server.js"]

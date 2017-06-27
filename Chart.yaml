@@ -1,7 +1,7 @@
 apiVersion: v1
 description: A Helm chart to deploy a Fleet Management demo for Kubernetes
 name: fleet-mgmt-chart
-version: 0.1.0
+version: 0.2.0
 maintainers:
   - name: Nigel Wright 
     email: nigel.wright@dimensiondata.com 

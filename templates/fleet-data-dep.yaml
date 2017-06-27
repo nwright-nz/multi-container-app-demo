@@ -17,7 +17,7 @@ spec:
           - name: PORT
             value: "{{ .Values.dataserver.port }}"
           - name: MONGODB_URL
-            value: "{{ .Values.db.url }}"
+            value: "{{ .Values.db.mongodb_url }}"
           
         image: {{ .Values.dataserver.image }}
         ports: 
