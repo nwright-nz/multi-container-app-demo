@@ -12,7 +12,7 @@ There are 5 services that make up the application:
 + Binary Data server (takes the GPS data and inserts it into the DB)  
 + Data server (aggregates all the gps co-ordinates from the DB and sends the co-ordinates via sockets to the UI)  
 
-The source for all of these is available [here] (https://github.com/hpepanda/fleet-mgmt) , and all credit for the code goes to this user.. I have simply built docker images for these components  
+The source for all of these is available [here](https://github.com/hpepanda/fleet-mgmt) , and all credit for the code goes to this user.. I have simply built docker images for these components  
 and parameterised some of the variables (eg the lat and lon of the desired map location).
 
 This has been packaged into a helm chart for easy deployment to Kubernetes.  
@@ -22,7 +22,7 @@ Edit the values.yaml file, and change the required settings.
 Eg, to change the location of the map from Auckland, New Zealand to Los Angeles, USA change the below:  
 ```yaml
 latitude:  -36.8485
-longtitude: 174.7633```  
+longtitude: 174.7633  
 ```
 to :  
   
